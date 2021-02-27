@@ -7,6 +7,23 @@
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
 var factorial = function(n) {
+  // base case
+  // if n is 1
+  if (n === 0) {
+    return 1;
+  }
+  if (Math.sign(n) === -1) {
+    return null;
+  }
+  if (n === 1) {
+    // return 1
+    return 1;
+    // Otherwise
+  } else {
+    // recursive case
+    // return n * function of n-1
+    return (n * factorial(n-1));
+  }
 };
 
 // 2. Compute the sum of an array of integers.
@@ -57,6 +74,20 @@ var reverse = function(string) {
 var palindrome = function(string) {
 };
 
+// 23. Write a function that counts the number of times a value occurs in an object.
+// var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
+// countValuesInObj(obj, 'r') // 2
+// countValuesInObj(obj, 'e') // 1
+var countValuesInObj = function(obj, value) {
+};
+
+// 24. Find all keys in an object (and nested objects) by a provided name and rename
+// them to a provided new name while preserving the value stored at that key.
+var replaceKeysInObj = function(obj, oldKey, newKey) {
+};
+
+
+// OPTIONAL ***************************************
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
 // modulo(5,2) // 1
@@ -131,17 +162,6 @@ var rMap = function(array, callback) {
 var countKeysInObj = function(obj, key) {
 };
 
-// 23. Write a function that counts the number of times a value occurs in an object.
-// var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
-// countValuesInObj(obj, 'r') // 2
-// countValuesInObj(obj, 'e') // 1
-var countValuesInObj = function(obj, value) {
-};
-
-// 24. Find all keys in an object (and nested objects) by a provided name and rename
-// them to a provided new name while preserving the value stored at that key.
-var replaceKeysInObj = function(obj, oldKey, newKey) {
-};
 
 // 25. Get the first n Fibonacci numbers. In the Fibonacci sequence, each subsequent
 // number is the sum of the previous two.
