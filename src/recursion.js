@@ -166,16 +166,50 @@ var palindrome = function(string) {
   return palindrome(middleCharacters(result));
 };
 
+// 22. Write a function that counts the number of times a key occurs in an object.
+// var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
+// countKeysInObj(obj, 'r') // 1
+// countKeysInObj(obj, 'e') // 2
+var countKeysInObj = function(obj, key) {
+  var counter = 0;
+  for (var prop in obj) {
+    if (prop === key) {
+      counter ++
+    } else if (typeof (obj[prop]) === 'object') {
+      counter += countKeysInObj(obj[prop], key);
+    }
+}
+  return counter;
+};
+
 // 23. Write a function that counts the number of times a value occurs in an object.
 // var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
 // countValuesInObj(obj, 'r') // 2
 // countValuesInObj(obj, 'e') // 1
 var countValuesInObj = function(obj, value) {
+  var counter = 0;
+  for (var key in obj) {
+  if (obj[key] === value) {
+    counter++;
+  } else if (typeof obj[key] === 'object') {
+    counter += countValuesInObj(obj[key], value);
+  }
+}
+  return counter;
 };
 
 // 24. Find all keys in an object (and nested objects) by a provided name and rename
 // them to a provided new name while preserving the value stored at that key.
 var replaceKeysInObj = function(obj, oldKey, newKey) {
+  for (var key in obj) {
+    if (key === oldKey) {
+      obj[newKey] = obj[oldKey];
+      delete obj[oldKey];
+    } else if (typeof obj[key] === 'object') {
+      replaceKeysInObj(obj[key], oldKey, newKey);
+    }
+  }
+  return obj;
 };
 
 
@@ -247,12 +281,6 @@ var countOccurrence = function(array, value) {
 var rMap = function(array, callback) {
 };
 
-// 22. Write a function that counts the number of times a key occurs in an object.
-// var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
-// countKeysInObj(obj, 'r') // 1
-// countKeysInObj(obj, 'e') // 2
-var countKeysInObj = function(obj, key) {
-};
 
 
 // 25. Get the first n Fibonacci numbers. In the Fibonacci sequence, each subsequent
